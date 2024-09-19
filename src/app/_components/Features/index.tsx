@@ -37,7 +37,7 @@ const Features = () => {
             {/* Left child: Image */}
             <div className="w-full md:w-1/2" ref={imageContainerRef}>
                 <h2 className="block md:hidden w-full text-2xl md:text-4xl font-semibold text-gray-800 mb-4">
-                    Why You Should Join <span className='text-buttonColor-500 font-semibold'>Us?</span>
+                   TestTaker <span className='text-buttonColor-500 font-semibold'>Features!</span>
                 </h2>
                 <img
                     src="/assets/Images/Content3.png"  // Replace with your image path
@@ -56,7 +56,7 @@ const Features = () => {
             {/* Right child: Content */}
             <div className=' flex flex-col w-full md:w-1/2 my-5 md:my-0'>
                 <h2 className="hidden md:block text-2xl xl:text-4xl font-semibold ">
-                    Why You Should Join <span className='text-buttonColor-500 font-semibold'>Us?</span>
+                    TestTaker <span className='text-buttonColor-500 font-semibold'>Features!</span>
                 </h2>
               
                 <div className={`flex flex-col h-full justify-center my-0 lg:my-10 mx-2 xlg:mx-5 px-0 lg:px-5 `}>
@@ -66,8 +66,7 @@ const Features = () => {
       >
         <span className="bg-buttonColor-500 text-white rounded-md p-1 xlg:p-3 text-sm lg:text-xl font-semibold mr-5">01</span>
         <p className="text-smallHeading-400 text-sm xlg:text-xl line-clamp-2 md:line-clamp-none font-inter leading-5 xlg:leading-[1.625rem]">
-          Our vision is to empower individuals and businesses to achieve their full potential through the power of freelance services.
-        </p>
+        Design exams quickly with our AI-driven tool. Generate and customize questions effortlessly based on your preferences. Tailor tests to meet specific criteria with ease.        </p>
       </div>
       <div
         className="flex items-start mb-5 bg-gray-100 rounded-lg px-5 xlg:px-2 py-5 transition-transform duration-300 hover:scale-105"
@@ -75,8 +74,7 @@ const Features = () => {
       >
         <span className="bg-buttonColor-500 text-white rounded-md p-1 xlg:p-3 text-sm lg:text-xl font-semibold mr-5">02</span>
         <p className="text-smallHeading-400 text-sm xlg:text-xl line-clamp-2 md:line-clamp-none font-inter leading-5 xlg:leading-[1.625rem]">
-          We envision a world where anyone can easily access high-quality freelance services, regardless of their location or resources.
-        </p>
+        Monitor test-takers with advanced AI and webcam technology. Detect suspicious behavior and record sessions for integrity checks. Receive instant alerts for any anomalies.        </p>
       </div>
       <div
         className="flex items-start mb-5 bg-gray-100 rounded-lg px-5 xlg:px-2 md:px-5 py-5 transition-transform duration-300 hover:scale-105"
@@ -84,8 +82,7 @@ const Features = () => {
       >
         <span className="bg-buttonColor-500 text-white rounded-md p-1 xlg:p-3 text-sm lg:text-xl font-semibold mr-5">03</span>
         <p className="text-smallHeading-400 text-sm xlg:text-xl line-clamp-2 md:line-clamp-none font-inter leading-5 xlg:leading-[1.625rem]">
-          Our goal is to create a world where freelancers can thrive, and businesses can achieve success through the power of collaboration and innovation.
-        </p>
+        Enjoy a smooth and intuitive interface for both exam creators and takers. Effortlessly manage tests, track progress, and access results with user-friendly navigation and real-time updates.        </p>
       </div>
     </div>
             </div>
