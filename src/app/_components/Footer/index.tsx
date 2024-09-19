@@ -9,7 +9,7 @@ export default function Footer(){
             {/* Third child */}
             <div className="flex flex-col-reverse gap-3 pb-10 md:flex-row justify-between md:items-center pt-5 mt-10 lg:mt-8 border-t border-footerMsgColor-500">
                 {/* 1st Child */}
-                <p className="text-base text-footerMsgColor-500 leading-6 mt-4 lg:mt-0 md:mt-4 ">©  testTaker 2024. All rights reserved.</p>
+                <p className="text-base text-footerMsgColor-500 leading-6 mt-4 lg:mt-0 md:mt-4 ">©testTaker 2024. All rights reserved.</p>
                 
                 {/* 2nd Child */}
                 <div className="flex items-center gap-4 md:w-auto">

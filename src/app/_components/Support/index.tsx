@@ -118,7 +118,7 @@ const Support = () => {
               name="name"
               value={form.name}
               onChange={handleChange}
-              placeholder="What's your good name?"
+              placeholder="Full Name"
               className=" py-4 px-6 placeholder:text-textColor-500  rounded-lg  border border-textColor-500 font-medium"
             />
           </label>
@@ -130,7 +130,7 @@ const Support = () => {
               name="email"
               value={form.email}
               onChange={handleChange}
-              placeholder="What's your web address?"
+              placeholder="Email"
               className="py-4 px-6 placeholder:text-textColor-500  rounded-lg  border border-textColor-500   font-medium"
             />
           </label>
@@ -142,7 +142,7 @@ const Support = () => {
               name="message"
               value={form.message}
               onChange={handleChange}
-              placeholder="What you want to say?"
+              placeholder="Message"
               className="py-4 px-6 placeholder:text-textColor-500 border border-textColor-500 rounded-lg font-medium"
             />
           </label>
