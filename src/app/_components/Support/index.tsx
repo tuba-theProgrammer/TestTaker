@@ -100,7 +100,7 @@ const Support = () => {
 
                 </h2>
                 <div className="text-base md:text-lg font-normal  text-textColor-500 leading-[1.625rem]">
-                Our dedicated support team is here to assist you around the clock. Whether you need help setting up tests, managing proctoring features, or resolving any issues, we're just a message away. Experience seamless support to ensure smooth and efficient exam management.                </div>
+                Our dedicated support team is here to assist you around the clock. Whether you need help setting up tests, managing proctoring features, or resolving any issues, we are just a message away. Experience seamless support to ensure smooth and efficient exam management.                </div>
               
              
             </div>
