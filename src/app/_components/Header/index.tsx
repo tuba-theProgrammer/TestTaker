@@ -55,7 +55,7 @@ const Navbar: React.FC = () => {
                             </svg>
                         </div>
 
-                        <div className="flex items-center font-bold text-xl md:text-2xl  justify-center md:justify-center sm:justify-center w-full md:w-auto">
+                        <div className="flex items-center text-white md:text-black font-bold text-xl md:text-2xl  justify-center md:justify-center sm:justify-center w-full md:w-auto">
                             <div onClick={handleIconClick} className="cursor-pointer">
                                 TestTaker.
                             </div>
@@ -65,10 +65,10 @@ const Navbar: React.FC = () => {
                         <a  href="#home" className="hover:text-buttonHover-400 flex justify-center items-center gap-2 text-textColor-500 font-inter font-semibold leading-5 lg:leading-6">
                                 Home
                             </a>
-                            <a href="#" className="hover:text-buttonHover-400 flex justify-center items-center gap-2 text-textColor-500 font-inter font-semibold leading-5 lg:leading-6">
+                            <a href="#support" className="hover:text-buttonHover-400 flex justify-center items-center gap-2 text-textColor-500 font-inter font-semibold leading-5 lg:leading-6">
                                 Support
                             </a>
-                            <a href="#" className="hover:text-buttonHover-400 flex justify-center items-center gap-2 text-textColor-500 font-inter font-semibold leading-5 lg:leading-6">
+                            <a href="#feature" className="hover:text-buttonHover-400 flex justify-center items-center gap-2 text-textColor-500 font-inter font-semibold leading-5 lg:leading-6">
                                 Features
                             </a>
                             <div  className="cursor-pointer hover:text-buttonHover-400 flex justify-center items-center gap-2 text-textColor-500 font-inter font-semibold leading-5 lg:leading-6">
@@ -81,7 +81,7 @@ const Navbar: React.FC = () => {
                         </div>
 
                         {isMobile && (
-                            <div className="flex justify-center items-center rounded-lg bg-[#6941c6]">
+                            <div className="flex justify-center items-center rounded-lg ">
                                 <div className="flex items-start">
                                     <div className="flex justify-center items-center text-white font-inter text-sm font-semibold leading-5">
                                         Join
@@ -97,7 +97,10 @@ const Navbar: React.FC = () => {
                         <a   href="#home" className="py-2 text-textColor-500 font-inter font-semibold leading-6">
                             Home
                         </a>
-                        <a href="#" className="py-2 text-textColor-500 font-inter font-semibold leading-6">
+                        <a href="#feature" className="py-2 text-textColor-500 font-inter font-semibold leading-6">
+                            Features
+                        </a>
+                        <a href="#support" className="py-2 text-textColor-500 font-inter font-semibold leading-6">
                             Features
                         </a>
                         <a href="/login" className="py-2 text-textColor-500 font-inter font-semibold leading-6">

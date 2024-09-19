@@ -19,14 +19,14 @@ const config: Config = {
       },
       colors: {
         buttonColor:{
-          500:'#7f56d9',
+          500:'#33a1fd',
         },
         buttonHover:{
-          500:'#6941c6',
-          400:'#53389e'
+          500:'#2176ff',
+        
         },
         headingColor:{
-          500:'#6941c6' 
+          500:'#2176ff' 
         },
         textColor:{
           500: '#475467',
@@ -35,9 +35,7 @@ const config: Config = {
           500:'#d0d5dd',   
 
         },
-        labelColor:{
-          500:'#6941c6'
-        },
+      
       }
     },
   },
