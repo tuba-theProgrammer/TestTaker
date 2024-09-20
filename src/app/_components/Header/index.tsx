@@ -31,6 +31,7 @@ const Navbar: React.FC = () => {
 
     return (
         <>  
+         
         <div className="mx-auto max-w-screen-2xl bg-white overflow-x-hidden">
         <div className="flex flex-col mx-0 lg:mx-16">
             <div className="shadow-sm md:bg-white bg-headingColor-500">
@@ -71,12 +72,12 @@ const Navbar: React.FC = () => {
                             <a href="#feature" className="hover:text-buttonHover-400 flex justify-center items-center gap-2 text-textColor-500 font-inter font-semibold leading-5 lg:leading-6">
                                 Features
                             </a>
-                            <div  className="cursor-pointer hover:text-buttonHover-400 flex justify-center items-center gap-2 text-textColor-500 font-inter font-semibold leading-5 lg:leading-6">
+                            <a  href="/Login" className="cursor-pointer hover:text-buttonHover-400 flex justify-center items-center gap-2 text-textColor-500 font-inter font-semibold leading-5 lg:leading-6">
                                 Login
-                            </div>
-                            <div  className="cursor-pointer hover:bg-buttonHover-500 flex justify-center items-center gap-2 px-[1.125rem] p-2 rounded-lg border border-buttonColor-500 bg-buttonColor-500 text-white font-inter font-semibold leading-5 lg:leading-6 cursor-pointer">
+                            </a>
+                            <a  href="/SignUp" className="cursor-pointer hover:bg-buttonHover-500 flex justify-center items-center gap-2 px-[1.125rem] p-2 rounded-lg border border-buttonColor-500 bg-buttonColor-500 text-white font-inter font-semibold leading-5 lg:leading-6 cursor-pointer">
                                 Sign Up
-                            </div>
+                            </a>
                           
                         </div>
 
@@ -103,10 +104,10 @@ const Navbar: React.FC = () => {
                         <a href="#support" className="py-2 text-textColor-500 font-inter font-semibold leading-6">
                             Features
                         </a>
-                        <a href="/login" className="py-2 text-textColor-500 font-inter font-semibold leading-6">
+                        <a href="/Login" className="py-2 text-textColor-500 font-inter font-semibold leading-6">
                             Login
                         </a>
-                        <a href="/signup" className="py-2 text-textColor-500 font-inter font-semibold leading-6">
+                        <a href="/SignUp" className="py-2 text-textColor-500 font-inter font-semibold leading-6">
                             Sign Up
                         </a>
                     </div>
