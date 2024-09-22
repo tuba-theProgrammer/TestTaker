@@ -216,12 +216,13 @@ interface LoginProps {
                             <div className="flex justify-between items-center w-full">
                                         <div className="flex items-center gap-1.5">
                                             <input type="checkbox" id="rememberMe" checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} className="text-smallHeading-500 w-4 h-4" />
-                                            <label htmlFor="rememberMe" className="text text-smallHeading-500 font-inter leading-5">Remember for 30 days</label>
+                                            <label htmlFor="rememberMe" className="text text-smallHeading-500 font-inter leading-5">Remember for 30 days </label>
                                         </div>
-                                        <div>
-                                            <button onClick={handleForgotPasswordClick} className="text text-smallHeading-500 font-inter leading-5 text-primaryColor-500">Forgot password?</button>
-                                        </div>
+                                      
                                     </div>
+                                    <div>
+                                            <button onClick={handleForgotPasswordClick} className="text text-textColor-500 font-inter leading-5 hover:underline">Forgot password?</button>
+                                        </div>
    <div className="flex flex-col items-center self-stretch rounded-lg">
       <button
         onClick={handleLogin}

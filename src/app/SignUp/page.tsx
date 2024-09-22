@@ -9,7 +9,7 @@ import axios from '../../app/_utils/axios';
 import { useRouter } from "next/navigation";
 import CryptoJS from 'crypto-js';
 import { getUserId } from "../../app/_utils/generalFunctions";
-
+import reviews from "../_utils/DummyData/data";
 interface SignUpProps {
   onUsernameClick: () => void;
 }
@@ -17,22 +17,6 @@ interface SignUpProps {
  const SignUp: React.FC<SignUpProps> = ({ onUsernameClick }) => {
 
   const router = useRouter();
-    const reviews = [
-        {
-          text: "We’ve been using Untitled to kick start every new project and can’t imagine working without it.",
-          name: "Amélie Laurent",
-          company: "Rocket.us",
-          description: "Space Exploration Agency",
-        },
-        {
-          text: "Untitled has transformed our workflow and increased our productivity significantly.",
-          name: "John Doe",
-          company: "Tech Solutions",
-          description: "Software Development Company",
-        },
-        // Add more reviews as needed
-      ];
-      
    
       // Define the validation schema
       const signupSchema = Yup.object().shape({
@@ -40,8 +24,11 @@ interface SignUpProps {
         password: Yup.string().min(8, 'Password must be at least 8 characters long').required('Password is required'),
         getTermsAndConditions: Yup.boolean().oneOf([true], 'You must accept the terms and conditions'),
       });
+
+
       const [currentIndex, setCurrentIndex] = useState(0);
       const [email, setEmail] = useState('');
+      const [getName, setName] = useState('');
       const [password, setPassword] = useState('');
 
       const [getTermsAndConditions, setTermsAndConditions] = useState(false);
@@ -49,9 +36,9 @@ interface SignUpProps {
       const [responseMessage, setresponseMessage] = useState('');
       const [showPassword, setShowPassword] = useState(false);
       const [suggestedPassword, setSuggestedPassword] = useState('');
-      
-  
       const { text, name, company, description } = reviews[currentIndex];
+
+      
 
       const handleNext = () => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % reviews.length);
@@ -84,65 +71,65 @@ interface SignUpProps {
 
         
       const handleSignUp = async (e: any) => {
-//         e.preventDefault();
+        e.preventDefault();
 
     
-//         // Clear previous error messages
-//         setErrorMessage('');
-//         setresponseMessage('');
-//         if (!email || !password||!getTermsAndConditions) {
-//           setErrorMessage('All fields are required');
-//           return;
-//         }
+        // Clear previous error messages
+        setErrorMessage('');
+        setresponseMessage('');
+        if (!name||!email || !password||!getTermsAndConditions) {
+          setErrorMessage('All fields are required');
+          return;
+        }
     
-//         if (!validateEmail(email)) {
-//           setErrorMessage('Invalid email address');
-//           return;
-//         }
+        if (!validateEmail(email)) {
+          setErrorMessage('Invalid email address');
+          return;
+        }
     
     
-//         // Validate form data
-//         try {
-//           await signupSchema.validate({ email, password, getTermsAndConditions });
-//         } catch (error: any) {
-//           setErrorMessage(error.message);
-//           return;
-//         }
+        // Validate form data
+        try {
+          await signupSchema.validate({ email, password, getTermsAndConditions });
+        } catch (error: any) {
+          setErrorMessage(error.message);
+          return;
+        }
     
-//         try {
+        try {
         
-//           const response = await axios.post('/auth/signUp-by-email', {
-//             email,
-//             password,
+          const response = await axios.post('/auth/signUp-by-email', {
+            email,
+            password,
            
-//           });
+          });
     
-//             console.log(response.data)
+            console.log(response.data)
             
-//     if (response.data.responsePayload?.user_id) {
-//       const userId = response.data.responsePayload.user_id;
-//       const encryptedUserId = CryptoJS.AES.encrypt(userId, process.env.NEXT_PUBLIC_SECRET_KEY as string).toString();
-//       localStorage.setItem('userId', encryptedUserId); 
-//       if (!response.data.responsePayload.username) {
-//         onUsernameClick()
-//       }else{
+    if (response.data.responsePayload?.user_id) {
+      const userId = response.data.responsePayload.user_id;
+      const encryptedUserId = CryptoJS.AES.encrypt(userId, process.env.NEXT_PUBLIC_SECRET_KEY as string).toString();
+      localStorage.setItem('userId', encryptedUserId); 
+      if (!response.data.responsePayload.username) {
+        onUsernameClick()
+      }else{
        
-//           const decryptedUserId = getUserId(encryptedUserId)
-//           const EmailVerifyResponse = await axios.get(`/auth/send-email-verification/${decryptedUserId}`);
-//           if(EmailVerifyResponse.data.responsePayload){
-//             router.push(`/verifyEmail?userId=${encryptedUserId}`);
-//           }
+          const decryptedUserId = getUserId(encryptedUserId)
+          const EmailVerifyResponse = await axios.get(`/auth/send-email-verification/${decryptedUserId}`);
+          if(EmailVerifyResponse.data.responsePayload){
+            router.push(`/verifyEmail?userId=${encryptedUserId}`);
+          }
      
-//     }
-//   }
+    }
+  }
     
-//     setresponseMessage(response.data.responseMessage);
+    setresponseMessage(response.data.responseMessage);
          
-//         } catch (error: any) {
+        } catch (error: any) {
 
-//           console.error(error);
-//           setErrorMessage(error.response?.data?.responseMessage || 'An error occurred. Please try again.');
-//         }
+          console.error(error);
+          setErrorMessage(error.response?.data?.responseMessage || 'An error occurred. Please try again.');
+        }
       };
 
 
@@ -172,12 +159,36 @@ interface SignUpProps {
     <div className="flex flex-col items-center gap-5 lg:gap-8 ">
   <div className="flex flex-col items-start gap-2 lg:gap-3 self-stretch">
     <div className="text self-stretch text-headingColor-500 font-inter text-3xl lg:text-4xl font-semibold leading-7 lg:leading-[44px]">Sign up</div>
-    <div className="self-stretch text-textColor-500 font-inter leading-5 lg:leading-6">Streamline Your Journey with <span className="text-buttonColor-500 font-semibold">ADALANCE</span></div>
+    <div className="self-stretch text-textColor-500 font-inter leading-5 lg:leading-6">Streamline Your Journey with <span className="text-buttonColor-500 font-semibold">TestTaker</span></div>
   </div>
   <div className="flex flex-col items-center self-stretch rounded-xl">
     
   <div className="flex flex-col items-start gap-5 self-stretch">
- 
+      
+  <div className="flex flex-col items-start self-stretch">
+      
+      <div className="flex flex-col items-start self-stretch gap-1.5">
+           <div className="text self-stretch text-smallHeading-500 font-inter text-sm font-medium leading-5">
+              Name*
+           </div>
+           <div className="relative flex items-center w-full">
+           
+            <input
+              type="text"
+              id="name"
+              value={email}
+              onChange={(e:any) => setEmail(e.target.value)}
+              className="text font-inter flex items-center w-full py-2 pl-10 pr-3 rounded-lg border border-inputFieldColor-500 bg-white leading-6"
+              placeholder="Enter your Name"
+            />
+          </div>
+      </div>
+   
+
+    </div>
+
+
+
       <div className="flex flex-col items-start self-stretch">
       
         <div className="flex flex-col items-start self-stretch gap-1.5">
