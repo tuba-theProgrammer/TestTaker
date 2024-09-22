@@ -1,17 +1,13 @@
 'use client'
 
-import Head from "next/head"
 import { useState } from "react";
 import axios from '../../app/_utils/axios'
 
 import { useRouter } from "next/navigation";
 import CryptoJS from 'crypto-js';
 import { getUserId } from "../../app/_utils/generalFunctions";
-interface LoginProps {
-  onUsernameClick: () => void;
-}
 
- const Login: React.FC<LoginProps> = ({ onUsernameClick }) => {
+ const Login: React.FC=() => {
   const router = useRouter();
     const reviews = [
         {
@@ -72,58 +68,55 @@ interface LoginProps {
   };
 
   const handleLogin = async (e:any) => {
-//     e.preventDefault();
-//     if (!email || !password) {
-//       setErrorMessage('Both fields are required');
-//       return;
-//     }
+    e.preventDefault();
+    if (!email || !password) {
+      setErrorMessage('Both fields are required');
+      return;
+    }
 
-//     if (!validateEmail(email)) {
-//       setErrorMessage('Invalid email address');
-//       return;
-//     }
+    if (!validateEmail(email)) {
+      setErrorMessage('Invalid email address');
+      return;
+    }
 
-//     try {
+    try {
  
-//       const response = await axios.post('/auth/login-by-email', {
-//         email,
-//         password,
-//         rememberMe
-//       });
-//       console.log(response.data)
+      const response = await axios.post('/examiner/login-by-email', {
+        email,
+        password,
+        rememberMe
+      });
+      console.log(response.data)
 
-// if (response.data.responsePayload?.user_id) {
-// const userId = response.data.responsePayload.user_id;
+if (response.data.responsePayload?.examiner_id) {
+const examinerId = response.data.responsePayload.examiner_id;
 
-// const encryptedUserId = CryptoJS.AES.encrypt(userId, process.env.NEXT_PUBLIC_SECRET_KEY as string).toString();
+const encryptedUserId = CryptoJS.AES.encrypt(examinerId, process.env.NEXT_PUBLIC_SECRET_KEY as string).toString();
 
-// localStorage.setItem('userId', encryptedUserId);
+localStorage.setItem('examinerId', encryptedUserId);
 
-// if (!response.data.responsePayload.username) {
-//   onUsernameClick();
-// }else{
-//   if(response.data.responsePayload.email_verified===true){
-//     router.push(`/homepage`);
-//   }else{
-//    // setIsVerifyingEmail(true);
-//     const decryptedUserId = getUserId(encryptedUserId)
-//     const EmailVerifyResponse = await axios.get(`/auth/send-email-verification/${decryptedUserId}`);
-//     if(EmailVerifyResponse.data.responsePayload){
-//       router.push(`/verifyEmail?userId=${encryptedUserId}`);
-//     }
 
-//   //  setIsVerifyingEmail(false);
-// }
-// }
+  if(response.data.responsePayload.email_verified===true){
+    router.push(`/`);
+  }else{
+   // setIsVerifyingEmail(true);
+    const decryptedUserId = getUserId(encryptedUserId)
+    const EmailVerifyResponse = await axios.get(`/examiner/send-email-verification/${decryptedUserId}`);
+    if(EmailVerifyResponse.data.responsePayload){
+      router.push(`/verifyEmail?examinerId=${encryptedUserId}`);
+    }
 
-// }
-//       setresponseMessage(response?.data?.responseMessage);
 
-//     } catch (error:any) {
-//       // Handle error
-//       console.error(error);
-//       setErrorMessage(error.response?.data?.responseMessage);
-//     }
+}
+
+}
+      setresponseMessage(response?.data?.responseMessage);
+
+    } catch (error:any) {
+      // Handle error
+      console.error(error);
+      setErrorMessage(error.response?.data?.responseMessage);
+    }
   };
 
  

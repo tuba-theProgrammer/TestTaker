@@ -1,7 +1,5 @@
 'use client'
 
-import { redirect } from "next/dist/server/api-utils";
-import Head from "next/head"
 import { useState } from "react";
 
 import * as Yup from 'yup';
@@ -20,6 +18,7 @@ interface SignUpProps {
    
       // Define the validation schema
       const signupSchema = Yup.object().shape({
+        name: Yup.string().min(2, 'Name must be at least 2 characters long').required('Name is required'),
         email: Yup.string().email('Invalid email').required('Email is required'),
         password: Yup.string().min(8, 'Password must be at least 8 characters long').required('Password is required'),
         getTermsAndConditions: Yup.boolean().oneOf([true], 'You must accept the terms and conditions'),
@@ -77,7 +76,7 @@ interface SignUpProps {
         // Clear previous error messages
         setErrorMessage('');
         setresponseMessage('');
-        if (!name||!email || !password||!getTermsAndConditions) {
+        if (!getName||!email || !password||!getTermsAndConditions) {
           setErrorMessage('All fields are required');
           return;
         }
@@ -90,7 +89,7 @@ interface SignUpProps {
     
         // Validate form data
         try {
-          await signupSchema.validate({ email, password, getTermsAndConditions });
+          await signupSchema.validate({ name:getName, email, password, getTermsAndConditions });
         } catch (error: any) {
           setErrorMessage(error.message);
           return;
@@ -98,7 +97,8 @@ interface SignUpProps {
     
         try {
         
-          const response = await axios.post('/auth/signUp-by-email', {
+          const response = await axios.post('/examiner/signUp-by-email', {
+            name:getName,
             email,
             password,
            
@@ -106,18 +106,18 @@ interface SignUpProps {
     
             console.log(response.data)
             
-    if (response.data.responsePayload?.user_id) {
-      const userId = response.data.responsePayload.user_id;
-      const encryptedUserId = CryptoJS.AES.encrypt(userId, process.env.NEXT_PUBLIC_SECRET_KEY as string).toString();
-      localStorage.setItem('userId', encryptedUserId); 
+    if (response.data.responsePayload?.examiner_id) {
+      const examinerId = response.data.responsePayload.examiner_id;
+      const encryptedUserId = CryptoJS.AES.encrypt(examinerId, process.env.NEXT_PUBLIC_SECRET_KEY as string).toString();
+      localStorage.setItem('examinerId', encryptedUserId); 
       if (!response.data.responsePayload.username) {
         onUsernameClick()
       }else{
        
           const decryptedUserId = getUserId(encryptedUserId)
-          const EmailVerifyResponse = await axios.get(`/auth/send-email-verification/${decryptedUserId}`);
+          const EmailVerifyResponse = await axios.get(`/examiner/send-email-verification/${decryptedUserId}`);
           if(EmailVerifyResponse.data.responsePayload){
-            router.push(`/verifyEmail?userId=${encryptedUserId}`);
+            router.push(`/verifyEmail?examinerId=${encryptedUserId}`);
           }
      
     }
@@ -176,8 +176,8 @@ interface SignUpProps {
             <input
               type="text"
               id="name"
-              value={email}
-              onChange={(e:any) => setEmail(e.target.value)}
+              value={getName}
+              onChange={(e:any) => setName(e.target.value)}
               className="text font-inter flex items-center w-full py-2 pl-10 pr-3 rounded-lg border border-inputFieldColor-500 bg-white leading-6"
               placeholder="Enter your Name"
             />
